@@ -6,7 +6,7 @@
 
 <title>unisyster || TEST YOUR SKILL </title>
 <link  rel="stylesheet" href="css/bootstrap.min.css"/>
- <link  rel="stylesheet" href="css/bootstrap-theme.min.css"/>    
+ <!--<link  rel="stylesheet" href="css/bootstrap-theme.min.css"/> -->   
  <link rel="stylesheet" href="css/main.css">
  <link  rel="stylesheet" href="css/font.css">
  <script src="js/jquery.js" type="text/javascript"></script>
@@ -47,6 +47,30 @@ echo '<span class="pull-right top title1" ><span class="log1"><span class="glyph
 }?>
 </div>
 </div></div>
+ <!--
+ <p>Timer</p>
+     timer
+<span id="countdown" class="timer"></span>
+<script>
+var seconds = 40;
+    function secondPassed() {
+    var minutes = Math.round((seconds - 30)/60);
+    var remainingSeconds = seconds % 60;
+    if (remainingSeconds < 10) {
+        remainingSeconds = "0" + remainingSeconds; 
+    }
+    document.getElementById('countdown').innerHTML = minutes + ":" +    remainingSeconds;
+    if (seconds == 0) {
+        clearInterval(countdownTimer);
+        document.getElementById('countdown').innerHTML = "Buzz Buzz";
+    } else {    
+        seconds--;
+    }
+    }
+var countdownTimer = setInterval('secondPassed()', 1000);
+</script>
+-->
+<!--timer endes-->
 <div class="bg">
 
 <!--navigation menu-->
@@ -75,6 +99,38 @@ echo '<span class="pull-right top title1" ><span class="log1"><span class="glyph
         </div>
         <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;Search</button>
       </form>
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav><!--navigation menu closed-->
@@ -111,29 +167,19 @@ $c=0;
 echo '</table></div>';
 
 }?>
-<!--<span id="countdown" class="timer"></span>
-<script>
-var seconds = 40;
-    function secondPassed() {
-    var minutes = Math.round((seconds - 30)/60);
-    var remainingSeconds = seconds % 60;
-    if (remainingSeconds < 10) {
-        remainingSeconds = "0" + remainingSeconds; 
-    }
-    document.getElementById('countdown').innerHTML = minutes + ":" +    remainingSeconds;
-    if (seconds == 0) {
-        clearInterval(countdownTimer);
-        document.getElementById('countdown').innerHTML = "Buzz Buzz";
-    } else {    
-        seconds--;
-    }
-    }
-var countdownTimer = setInterval('secondPassed()', 1000);
-</script>-->
+</div>
+</div>
+</div>
 
 <!--home closed-->
 
 <!--quiz start-->
+<div class="container">
+<!--
+<div class="col-lg-4" style="background:red">
+</div>
+
+<div class="col-lg-8" style="background:green">-->
 <?php
 if(@$_GET['q']== 'quiz' && @$_GET['step']== 2) {
 $eid=@$_GET['eid'];
@@ -190,6 +236,7 @@ echo '</table></div>';
 }
 ?>
 <!--quiz end-->
+</div>
 <?php
 //history start
 if(@$_GET['q']== 2) 
