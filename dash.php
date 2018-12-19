@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Unisyster || DASHBOARD </title>
+<title>Skill Oxide || DASHBOARD </title>
 <link  rel="stylesheet" href="css/bootstrap.min.css"/>
  <link  rel="stylesheet" href="css/bootstrap-theme.min.css"/>    
  <link rel="stylesheet" href="css/main.css">
@@ -80,6 +80,7 @@ echo '<span class="pull-right top title1" ><span class="log1"><span class="glyph
           <ul class="dropdown-menu">
             <li><a href="dash.php?q=4">Add Quiz</a></li>
             <li><a href="dash.php?q=5">Remove Quiz</a></li>
+            <li><a href="dash.php?q=6">download report</a></li>
           </ul>
         </li>
       </ul>
@@ -409,6 +410,14 @@ echo '</table></div>';
 
 
 </div><!--container closed-->
+<?php if (@$_GET['q'] == 6) {
+  echo '    <div class="container" style="width:900px;">
+        <form method="post" action="export.php" align="center">
+            <input type="submit" name="export" value="download result" class="btn btn-lg btn-success" />
+        </form>';
+}
+?>
+
 </div></div>
 </body>
 </html>

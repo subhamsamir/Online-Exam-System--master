@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>unisyster || TEST YOUR SKILL </title>
+<title>Skill Oxide || TEST YOUR SKILL </title>
 <link  rel="stylesheet" href="css/bootstrap.min.css"/>
  <!--<link  rel="stylesheet" href="css/bootstrap-theme.min.css"/> -->   
  <link rel="stylesheet" href="css/main.css">
@@ -47,30 +47,8 @@ echo '<span class="pull-right top title1" ><span class="log1"><span class="glyph
 }?>
 </div>
 </div></div>
- <!--
- <p>Timer</p>
-     timer
-<span id="countdown" class="timer"></span>
-<script>
-var seconds = 40;
-    function secondPassed() {
-    var minutes = Math.round((seconds - 30)/60);
-    var remainingSeconds = seconds % 60;
-    if (remainingSeconds < 10) {
-        remainingSeconds = "0" + remainingSeconds; 
-    }
-    document.getElementById('countdown').innerHTML = minutes + ":" +    remainingSeconds;
-    if (seconds == 0) {
-        clearInterval(countdownTimer);
-        document.getElementById('countdown').innerHTML = "Buzz Buzz";
-    } else {    
-        seconds--;
-    }
-    }
-var countdownTimer = setInterval('secondPassed()', 1000);
-</script>
--->
-<!--timer endes-->
+ 
+ 
 <div class="bg">
 
 <!--navigation menu-->
@@ -84,7 +62,7 @@ var countdownTimer = setInterval('secondPassed()', 1000);
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><b>unisyster</b></a>
+      <a class="navbar-brand" href="#"><b>Skill Oxide</b></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -100,21 +78,6 @@ var countdownTimer = setInterval('secondPassed()', 1000);
         <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;Search</button>
       </form>
      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -185,7 +148,7 @@ if(@$_GET['q']== 'quiz' && @$_GET['step']== 2) {
 $eid=@$_GET['eid'];
 $sn=@$_GET['n'];
 $total=@$_GET['t'];
-$q=mysqli_query($con,"SELECT * FROM questions WHERE eid='$eid' AND sn='$sn' " );
+$q=mysqli_query($con,"SELECT * FROM questions WHERE eid='$eid' AND sn='$sn' ORDER BY RAND() " );
 echo '<div class="panel" style="margin:5%">';
 while($row=mysqli_fetch_array($q) )
 {
@@ -222,8 +185,8 @@ $r=$row['sahi'];
 $qa=$row['level'];
 echo '<tr style="color:#66CCFF"><td>Total Questions</td><td>'.$qa.'</td></tr>
       <tr style="color:#99cc32"><td>right Answer&nbsp;<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></td><td>'.$r.'</td></tr> 
-	  <tr style="color:red"><td>Wrong Answer&nbsp;<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></td><td>'.$w.'</td></tr>
-	  <tr style="color:#66CCFF"><td>Score&nbsp;<span class="glyphicon glyphicon-star" aria-hidden="true"></span></td><td>'.$s.'</td></tr>';
+	    <tr style="color:red"><td>Wrong Answer&nbsp;<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></td><td>'.$w.'</td></tr>
+	    <tr style="color:#66CCFF"><td>Score&nbsp;<span class="glyphicon glyphicon-star" aria-hidden="true"></span></td><td>'.$s.'</td></tr>';
 }
 $q=mysqli_query($con,"SELECT * FROM rank WHERE  email='$email' " )or die('Error157');
 while($row=mysqli_fetch_array($q) )
@@ -289,12 +252,9 @@ echo '<tr><td style="color:#99cc32"><b>'.$c.'</b></td><td>'.$name.'</td><td>'.$g
 echo '</table></div>';}
 ?>
 
-
-
 </div></div></div></div>
 <?php
 require("includes/footer.php");
 ?>
-
 </body>
 </html>
