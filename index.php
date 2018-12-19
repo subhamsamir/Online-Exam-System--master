@@ -4,12 +4,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>unisyster || TEST YOUR SKILL </title>
+<title>Skill Oxide || TEST YOUR SKILL </title>
 <link  rel="stylesheet" href="css/bootstrap.min.css"/>
  <link  rel="stylesheet" href="css/bootstrap-theme.min.css"/>    
  <link rel="stylesheet" href="css/main.css">
  <link  rel="stylesheet" href="css/font.css">
  <script src="js/jquery.js" type="text/javascript"></script>
+
+ <link rel="shortcut icon" href="../favicon.ico"> 
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/style2.css" />
+		<script type="text/javascript" src="js/modernizr.custom.86080.js"></script>
 
   <script src="js/bootstrap.min.js"  type="text/javascript"></script>
  	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
@@ -23,13 +28,39 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 </script>
 </head>
 
-<body>
-<div class="header">
-<div class="row">
-<div class="col-lg-6">
-<span class="logo">Test Your Skill</span></div>
-<div class="col-md-2 col-md-offset-4">
-<a href="#" class="pull-right btn sub1" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;<span class="title1"><b>Signin</b></span></a></div>
+<body id="page">
+ <ul class="cb-slideshow">
+            <li><span>Image 01</span><div><h3>se·ren·i·ty</h3></div></li>
+            <li><span>Image 02</span><div><h3>com·po·sure</h3></div></li>
+            <li><span>Image 03</span><div><h3>e·qua·nim·i·ty</h3></div></li>
+            <li><span>Image 04</span><div><h3>bal·ance</h3></div></li>
+            <li><span>Image 05</span><div><h3>qui·e·tude</h3></div></li>
+            <li><span>Image 06</span><div><h3>re·lax·a·tion</h3></div></li>
+        </ul>
+        <div class="container">
+            <!-- Codrops top bar -->
+            <div class="codrops-top">
+                <a href="http://skilloxide.com">
+                    <strong>&laquo; Main Website: </strong>Skill Oxide
+                </a>
+                <span class="right">
+                    	<div class="col-md-2 col-md-offset-4">
+<a href="#" class="pull-right btn " data-toggle="modal" data-target="#myModal">Sign In</b></a></div>
+                    <a href="#" target="_blank"></a>
+                    <a href="#/">
+                        <strong></strong>
+                    </a>
+                </span>
+                <div class="clr"></div>
+            </div><!--/ Codrops top bar -->
+            <header>
+                <h1>Skill Oxide Student Portal <span></span></h1>
+                <h2>Quality with speed</h2>
+				<p class="codrops-demos btn-lg">
+				</p>
+            </header>
+        </div>
+
 <!--sign in modal start-->
 <div class="modal fade" id="myModal">
   <div class="modal-dialog">
@@ -77,7 +108,7 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 </div><!--header row closed-->
 </div>
 
-<div class="bg1">
+<div>
 <div class="row">
 
 <div class="col-md-7"></div>
