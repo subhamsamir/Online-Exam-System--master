@@ -19,7 +19,12 @@
 {echo'<script>alert("'.@$_GET['w'].'");</script>';}
 ?>
 <!--alert message end-->
-
+<style>
+a.disabled {
+   pointer-events: none;
+   cursor: default;
+}
+</style>
 </head>
 <?php
 include_once 'dbConnection.php';
@@ -79,21 +84,6 @@ echo '<span class="pull-right top title1" ><span class="log1"><span class="glyph
       </form>
      
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav><!--navigation menu closed-->
@@ -112,7 +102,7 @@ while($row = mysqli_fetch_array($result)) {
 	$title = $row['title'];
 	$total = $row['total'];
 	$sahi = $row['sahi'];
-    $time = $row['time'];
+  $time = $row['time'];
 	$eid = $row['eid'];
 $q12=mysqli_query($con,"SELECT score FROM history WHERE eid='$eid' AND email='$email'" )or die('Error98');
 $rowcount=mysqli_num_rows($q12);	
@@ -122,8 +112,8 @@ if($rowcount == 0){
 }
 else
 {
-echo '<tr style="color:#99cc32"><td>'.$c++.'</td><td>'.$title.'&nbsp;<span title="This quiz is already solve by you" class="glyphicon glyphicon-ok" aria-hidden="true"></span></td><td>'.$total.'</td><td>'.$sahi*$total.'</td><td>'.$time.'&nbsp;min</td>
-	<td><b><a href="update.php?q=quizre&step=25&eid='.$eid.'&n=1&t='.$total.'" class="pull-right btn sub1" style="margin:0px;background:red"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>&nbsp;<span class="title1"><b>Restart</b></span></a></b></td></tr>';
+echo '<tr style="color:red"><td>'.$c++.'</td><td>'.$title.'&nbsp;<span title="This quiz is already solve by you" class="glyphicon glyphicon-ok" aria-hidden="true"></span></td><td>'.$total.'</td><td>'.$sahi*$total.'</td><td>'.$time.'&nbsp;min</td>
+	<td><b><a href="update.php?q=quizre&step=25&eid='.$eid.'&n=1&t='.$total. '" class="  pull-right btn sub1" style="margin:0px;background:red"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>&nbsp;<span class="title1"><b>Done</b></span></a></b></td></tr>';
 }
 }
 $c=0;
@@ -138,18 +128,16 @@ echo '</table></div>';
 
 <!--quiz start-->
 <div class="container">
-<!--
-<div class="col-lg-4" style="background:red">
-</div>
-
-<div class="col-lg-8" style="background:green">-->
 <?php
 if(@$_GET['q']== 'quiz' && @$_GET['step']== 2) {
+  echo 'time left <span id="countdown" class="timer"></span><script> var seconds = 80; function secondPassed() { var minutes = Math.round((seconds - 30)/60); var remainingSeconds = seconds % 60;if (remainingSeconds < 10) {remainingSeconds = "0" + remainingSeconds; }document.getElementById("countdown").innerHTML = minutes + ":" +    remainingSeconds;if (seconds == 0) {clearInterval(countdownTimer);document.getElementById("countdown").innerHTML = "Buzz Buzz";} else {          seconds--;}}var countdownTimer = setInterval("secondPassed()", 1000);</script>';
 $eid=@$_GET['eid'];
 $sn=@$_GET['n'];
 $total=@$_GET['t'];
 $q=mysqli_query($con,"SELECT * FROM questions WHERE eid='$eid' AND sn='$sn' ORDER BY RAND() " );
 echo '<div class="panel" style="margin:5%">';
+
+
 while($row=mysqli_fetch_array($q) )
 {
 $qns=$row['qns'];
@@ -162,6 +150,7 @@ echo '<form action="update.php?q=quiz&step=2&eid='.$eid.'&n='.$sn.'&t='.$total.'
 
 while($row=mysqli_fetch_array($q) )
 {
+
 $option=$row['option'];
 $optionid=$row['optionid'];
 echo'<input type="radio" name="ans" value="'.$optionid.'">'.$option.'<br /><br />';

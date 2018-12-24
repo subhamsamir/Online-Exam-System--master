@@ -1,0 +1,141 @@
+.fa{
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  /*border-radius: 50%;*/
+}
+
+.fa:hover {
+    opacity: 0.7;
+    text-decoration-line: none;
+}
+
+.fa-facebook {
+  color: white;
+}
+.fa-facebook:hover {
+    color: #3B5998;
+  }
+
+.fa-twitter {
+  color: white;
+}
+.fa-twitter:hover {
+    color: cyan;
+  }
+  
+
+.fa-google {
+  color: white;
+}
+.fa-google:hover {
+  color: #dd4b39;
+
+  }
+
+.fa-linkedin {
+  color: white;
+}
+.fa-linkedin:hover {
+    color: #007bb5;
+  }
+
+.fa-youtube {
+ 
+  color: white;
+}
+.fa-youtube:hover {
+    color: #bb0000;
+  }
+  
+
+.fa-instagram {
+  color: white;
+}
+.fa-instagram:hover {
+    color: #125688;
+  }
+
+.fa-pinterest {
+  color: white;
+}
+.fa-pinterest:hover {
+    color: #cb2027;
+  }
+
+.fa-snapchat-ghost {
+  background: #fffc00;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.fa-skype {
+  color: white;
+}
+.fa-skype:hover {
+    color: #00aff0;
+  }
+
+.fa-android {
+  /*background: #a4c639;*/
+  color: white;
+}
+
+.fa-dribbble {
+
+  color: white;
+}
+
+.fa-vimeo {
+
+  color: white;
+}
+
+.fa-tumblr {
+
+  color: white;
+}
+
+.fa-vine {
+  color: white;
+}
+
+.fa-foursquare {
+
+  color: white;
+}
+
+.fa-stumbleupon {
+
+  color: white;
+}
+
+.fa-flickr {
+
+  color: white;
+}
+
+.fa-yahoo {
+
+  color: white;
+}
+
+.fa-soundcloud {
+  
+  color: white;
+}
+
+.fa-reddit {
+
+  color: white;
+}
+
+.fa-rss {
+  color: white;
+}
+.fa-rss:hover {
+    color: #ff6600;
+  }

@@ -3,7 +3,7 @@
 $con= new mysqli('localhost','root','','online_exam')or die("Could not connect to mysql".mysqli_error($con));
 
 ?>
-<!--timer-->
+<!--timer->
  <p>Timer</p>
      timer
 <span id="countdown" class="timer"></span>
@@ -25,4 +25,4 @@ var seconds = 40;
     }
 var countdownTimer = setInterval('secondPassed()', 1000);
 </script>
-<!--timer endes-->
+<--timer endes-->

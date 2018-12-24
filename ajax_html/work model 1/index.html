@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Ajax Text</title>
+  </head>
+  <body>
+
+    <div id="main">
+      This is the original text when the page first loads.
+    </div>
+
+    <button id="true_false-button" type="button">true_false</button>
+    <button id="non_verbal-button" type="button">non verbal</button>
+    <button id="mcq-button" type="button">mcq</button>
+
+    <script>
+      function replaceText() {
+        var target = document.getElementById("main");
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'true_false.php', true);
+        xhr.onreadystatechange = function () {
+          console.log('readyState: ' + xhr.readyState);
+          if(xhr.readyState == 2) {
+            target.innerHTML = 'Loading...';
+          }
+          if(xhr.readyState == 4 && xhr.status == 200) {
+            target.innerHTML = xhr.responseText;
+          }
+        }
+        xhr.send();
+      }
+      var button = document.getElementById ("true_false-button");
+      button.addEventListener("click", replaceText);
+    </script>
+
+    <script>
+      function replaceText() {
+        var target = document.getElementById("main");
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'non_verbal.php', true);
+        xhr.onreadystatechange = function () {
+          console.log('readyState: ' + xhr.readyState);
+          if (xhr.readyState == 2) {
+            target.innerHTML = 'Loading...';
+          }
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            target.innerHTML = xhr.responseText;
+          }
+        }
+        xhr.send();
+      }
+      var button = document.getElementById("non_verbal-button");
+      button.addEventListener("click", replaceText);
+    </script>
+
+
+  </body>
+</html>

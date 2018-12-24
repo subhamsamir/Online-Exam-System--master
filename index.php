@@ -9,6 +9,8 @@
  <link  rel="stylesheet" href="css/bootstrap-theme.min.css"/>    
  <link rel="stylesheet" href="css/main.css">
  <link  rel="stylesheet" href="css/font.css">
+<link href="css/para.css" rel="stylesheet" type="text/css">
+
  <script src="js/jquery.js" type="text/javascript"></script>
 
  <link rel="shortcut icon" href="../favicon.ico"> 
@@ -46,7 +48,7 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
                 <span class="right">
                     	<div class="col-md-2 col-md-offset-4">
 <a href="#" class="pull-right btn " data-toggle="modal" data-target="#myModal">Sign In</b></a></div>
-                    <a href="#" target="_blank"></a>
+                    <!--<a href="#" target="_blank" data-toggle="modal" data-target="#signup"> signup</a>-->
                     <a href="#/">
                         <strong></strong>
                     </a>
@@ -69,11 +71,13 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title title1"><span style="color:orange">Log In</span></h4>
       </div>
+
+
+
+
       <div class="modal-body">
         <form class="form-horizontal" action="login.php?q=index.php" method="POST">
 <fieldset>
-
-
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-3 control-label" for="email"></label>  
