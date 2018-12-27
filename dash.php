@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Skill Oxide || DASHBOARD </title>
+<title>SkillOxide || DASHBOARD </title>
 <link  rel="stylesheet" href="css/bootstrap.min.css"/>
  <link  rel="stylesheet" href="css/bootstrap-theme.min.css"/>    
  <link rel="stylesheet" href="css/main.css">
@@ -71,7 +71,7 @@ echo '<span class="pull-right top title1" ><span class="log1"><span class="glyph
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li <?php if(@$_GET['q']==0) echo'class="active"'; ?>><a href="dash.php?q=0">Home<span class="sr-only">(current)</span></a></li>
+        <!--<li <?php if(@$_GET['q']==0) echo'class="active"'; ?>><a href="dash.php?q=0">Home<span class="sr-only">(current)</span></a></li>-->
         <li <?php if(@$_GET['q']==1) echo'class="active"'; ?>><a href="dash.php?q=1">User</a></li>
 		<li <?php if(@$_GET['q']==2) echo'class="active"'; ?>><a href="dash.php?q=2">Ranking</a></li>
 		<li <?php if(@$_GET['q']==3) echo'class="active"'; ?>><a href="dash.php?q=3">Feedback</a></li>
@@ -329,46 +329,152 @@ echo '<b>Question number&nbsp;'.$i.'&nbsp;:</><br /><!-- Text input-->
   <textarea rows="3" cols="5" name="qns'.$i.'" class="form-control" placeholder="Write question number '.$i.' here..."></textarea>  
   </div>
 </div>
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-12 control-label" for="'.$i.'1"></label>  
+<div class="type-group'.$i.' mcq-image" style="display:none; margin-bottom:10px;">
+  <div class="form-group">
+  <label class="col-md-12 control-label" for="mcq-question-image'.$i.' "></label>  
   <div class="col-md-12">
-  <input id="'.$i.'1" name="'.$i.'1" placeholder="Enter option a" class="form-control input-md" type="text">
-    
+  <input id="'.$i.'1" name="mcq-question-image'.$i.'" placeholder="Enter image for question" class="form-control input-md" type="text">
+  </div>
   </div>
 </div>
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-12 control-label" for="'.$i.'2"></label>  
-  <div class="col-md-12">
-  <input id="'.$i.'2" name="'.$i.'2" placeholder="Enter option b" class="form-control input-md" type="text">
-    
-  </div>
-</div>
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-12 control-label" for="'.$i.'3"></label>  
-  <div class="col-md-12">
-  <input id="'.$i.'3" name="'.$i.'3" placeholder="Enter option c" class="form-control input-md" type="text">
-    
-  </div>
-</div>
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-12 control-label" for="'.$i.'4"></label>  
-  <div class="col-md-12">
-  <input id="'.$i.'4" name="'.$i.'4" placeholder="Enter option d" class="form-control input-md" type="text">
-    
-  </div>
-</div>
+
 <br />
-<b>Correct answer</b>:<br />
-<select id="ans'.$i.'" name="ans'.$i.'" placeholder="Choose correct answer " class="form-control input-md" >
-   <option value="a">Select answer for question '.$i.'</option>
-  <option value="a">option a</option>
-  <option value="b">option b</option>
-  <option value="c">option c</option>
-  <option value="d">option d</option> </select><br /><br />'; 
+<b>Question Type</b>:<br />
+<select id="question_type'.$i.'" data-id="'.$i.'" name="question_type'.$i.'" class="form-control input-md question-type" >
+  <option value="mcq">Select type for question '.$i.'</option>
+  <option value="mcq">MCQ</option>
+  <--option value="multiselect">Multiselect</option-->
+  <option value="boolean">Yes/No</option>
+  <--option value="descriptive">Descriptive</option-->
+  <option value="mcq-image">MCQ (with image)</option> 
+</select><br /><br />
+
+<div class="type-group'.$i.' mcq-image" style="display:none;">
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="'.$i.'1"></label>  
+      <div class="col-md-12">
+      <input id="'.$i.'1" name="mcq-image'.$i.'1" placeholder="Enter image a" class="form-control input-md" type="text">
+        
+      </div>
+    </div>
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="'.$i.'2"></label>  
+      <div class="col-md-12">
+      <input id="'.$i.'2" name="mcq-image'.$i.'2" placeholder="Enter image b" class="form-control input-md" type="text">
+        
+      </div>
+    </div>
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="'.$i.'3"></label>  
+      <div class="col-md-12">
+      <input id="'.$i.'3" name="mcq-image'.$i.'3" placeholder="Enter image c" class="form-control input-md" type="text">
+        
+      </div>
+    </div>
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="'.$i.'4"></label>  
+      <div class="col-md-12">
+      <input id="'.$i.'4" name="mcq-image'.$i.'4" placeholder="Enter image d" class="form-control input-md" type="text">
+        
+      </div>
+    </div>
+    <br />
+    <b>Correct answer</b>:<br />
+    <select id="ans'.$i.'" name="mcq-image-ans'.$i.'" placeholder="Choose correct answer " class="form-control input-md" >
+       <option value="a">Select answer for question '.$i.'</option>
+      <option value="a">Image a</option>
+      <option value="b">Image b</option>
+      <option value="c">Image c</option>
+      <option value="d">Image d</option> 
+    </select><br /><br />
+</div>
+
+<div class="type-group'.$i.' boolean" style="display:none;">
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="'.$i.'1"></label>  
+      <div class="col-md-12">
+      <input id="'.$i.'1" name="boolean'.$i.'1" placeholder="Enter label for Yes" class="form-control input-md" type="text">
+        
+      </div>
+    </div>
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="'.$i.'2"></label>  
+      <div class="col-md-12">
+      <input id="'.$i.'2" name="boolean'.$i.'2" placeholder="Enter label for No"  class="form-control input-md" type="text">
+        
+      </div>
+    </div>
+    <br />
+    <b>Correct answer</b>:<br />
+    <select id="ans'.$i.'" name="boolean-ans'.$i.'" placeholder="Choose correct answer " class="form-control input-md" >
+       <option value="a">Select answer for question '.$i.'</option>
+      <option value="a">option a</option>
+      <option value="b">option b</option>
+    </select><br /><br />
+</div>
+
+<div class="type-group'.$i.' mcq">
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="'.$i.'1"></label>  
+      <div class="col-md-12">
+      <input id="'.$i.'1" name="mcq'.$i.'1" placeholder="Enter option a" class="form-control input-md" type="text">
+        
+      </div>
+    </div>
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="'.$i.'2"></label>  
+      <div class="col-md-12">
+      <input id="'.$i.'2" name="mcq'.$i.'2" placeholder="Enter option b" class="form-control input-md" type="text">
+        
+      </div>
+    </div>
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="'.$i.'3"></label>  
+      <div class="col-md-12">
+      <input id="'.$i.'3" name="mcq'.$i.'3" placeholder="Enter option c" class="form-control input-md" type="text">
+        
+      </div>
+    </div>
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-12 control-label" for="'.$i.'4"></label>  
+      <div class="col-md-12">
+      <input id="'.$i.'4" name="mcq'.$i.'4" placeholder="Enter option d" class="form-control input-md" type="text">
+        
+      </div>
+    </div>
+    <br />
+    <b>Correct answer</b>:<br />
+    <select id="ans'.$i.'" name="mcq-ans'.$i.'" placeholder="Choose correct answer " class="form-control input-md" >
+       <option value="a">Select answer for question '.$i.'</option>
+      <option value="a">option a</option>
+      <option value="b">option b</option>
+      <option value="c">option c</option>
+      <option value="d">option d</option> 
+    </select><br /><br />
+</div>';
+?>
+<script type="text/javascript">
+    jQuery('.question-type').change(function(){
+        var id = jQuery(this).attr('data-id');
+        if(jQuery(this).val()){
+            jQuery('.type-group'+id).hide();
+            jQuery('.type-group'+id+'.'+jQuery(this).val()).show();
+        }else{
+            jQuery('.type-group'+id+'.'+jQuery(this).val()).show();
+        }
+    });
+</script>
+<?php
  }
     
 echo '<div class="form-group">
@@ -417,7 +523,6 @@ echo '</table></div>';
         </form>';
 }
 ?>
-
 </div></div>
 </body>
 </html>

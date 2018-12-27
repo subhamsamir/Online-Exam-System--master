@@ -7,6 +7,7 @@
 <title>Skill Oxide || TEST YOUR SKILL </title>
 <link  rel="stylesheet" href="css/bootstrap.min.css"/>
  <!--<link  rel="stylesheet" href="css/bootstrap-theme.min.css"/> -->   
+                     <link rel="stylesheet" href="css/social.css"  type="text/css">
  <link rel="stylesheet" href="css/main.css">
  <link  rel="stylesheet" href="css/font.css">
  <script src="js/jquery.js" type="text/javascript"></script>
@@ -19,6 +20,7 @@
 {echo'<script>alert("'.@$_GET['w'].'");</script>';}
 ?>
 <!--alert message end-->
+
 <style>
 a.disabled {
    pointer-events: none;
@@ -33,7 +35,7 @@ include_once 'dbConnection.php';
 <div class="header">
 <div class="row">
 <div class="col-lg-6">
-<span class="logo">Test Your Skill</span></div>
+<span class="logo">SkillOxide Student Dashboard</span></div>
 <div class="col-md-4 col-md-offset-2">
  <?php
  include_once 'dbConnection.php';
@@ -48,12 +50,35 @@ $name = $_SESSION['name'];
 $email=$_SESSION['email'];
 
 include_once 'dbConnection.php';
+include_once 'function.php';
 echo '<span class="pull-right top title1" ><span class="log1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Hello,</span> <a href="account.php?q=1" class="log log1">'.$name.'</a>&nbsp;|&nbsp;<a href="logout.php?q=account.php" class="log"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Signout</button></a></span>';
 }?>
 </div>
 </div></div>
- 
- 
+ <!--
+ <p>Timer</p>
+     timer
+<span id="countdown" class="timer"></span>
+<script>
+var seconds = 40;
+    function secondPassed() {
+    var minutes = Math.round((seconds - 30)/60);
+    var remainingSeconds = seconds % 60;
+    if (remainingSeconds < 10) {
+        remainingSeconds = "0" + remainingSeconds; 
+    }
+    document.getElementById('countdown').innerHTML = minutes + ":" +    remainingSeconds;
+    if (seconds == 0) {
+        clearInterval(countdownTimer);
+        document.getElementById('countdown').innerHTML = "Buzz Buzz";
+    } else {    
+        seconds--;
+    }
+    }
+var countdownTimer = setInterval('secondPassed()', 1000);
+</script>
+-->
+<!--timer endes-->
 <div class="bg">
 
 <!--navigation menu-->
@@ -82,8 +107,6 @@ echo '<span class="pull-right top title1" ><span class="log1"><span class="glyph
         </div>
         <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;Search</button>
       </form>
-     
-
       </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav><!--navigation menu closed-->
@@ -102,7 +125,7 @@ while($row = mysqli_fetch_array($result)) {
 	$title = $row['title'];
 	$total = $row['total'];
 	$sahi = $row['sahi'];
-  $time = $row['time'];
+    $time = $row['time'];
 	$eid = $row['eid'];
 $q12=mysqli_query($con,"SELECT score FROM history WHERE eid='$eid' AND email='$email'" )or die('Error98');
 $rowcount=mysqli_num_rows($q12);	
@@ -112,8 +135,8 @@ if($rowcount == 0){
 }
 else
 {
-echo '<tr style="color:red"><td>'.$c++.'</td><td>'.$title.'&nbsp;<span title="This quiz is already solve by you" class="glyphicon glyphicon-ok" aria-hidden="true"></span></td><td>'.$total.'</td><td>'.$sahi*$total.'</td><td>'.$time.'&nbsp;min</td>
-	<td><b><a href="update.php?q=quizre&step=25&eid='.$eid.'&n=1&t='.$total. '" class="  pull-right btn sub1" style="margin:0px;background:red"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>&nbsp;<span class="title1"><b>Done</b></span></a></b></td></tr>';
+echo '<tr style="color:#99cc32"><td>'.$c++.'</td><td>'.$title.'&nbsp;<span title="This quiz is already solve by you" class="glyphicon glyphicon-ok" aria-hidden="true"></span></td><td>'.$total.'</td><td>'.$sahi*$total.'</td><td>'.$time.'&nbsp;min</td>
+	<td><b><a href="update.php?q=quizre&step=25&eid='.$eid.'&n=1&t='.$total. '" class="pull-right btn sub1 disabled" style="margin:0px;background:red"><span class="glyphicon glyphicon-repeat " aria-hidden="true"></span>&nbsp;<span class="title1"><b>Restart</b></span></a></b></td></tr>';
 }
 }
 $c=0;
@@ -128,35 +151,45 @@ echo '</table></div>';
 
 <!--quiz start-->
 <div class="container">
+<!--
+<div class="col-lg-4" style="background:red">
+</div>
+
+<div class="col-lg-8" style="background:green">-->
 <?php
 if(@$_GET['q']== 'quiz' && @$_GET['step']== 2) {
-  echo 'time left <span id="countdown" class="timer"></span><script> var seconds = 80; function secondPassed() { var minutes = Math.round((seconds - 30)/60); var remainingSeconds = seconds % 60;if (remainingSeconds < 10) {remainingSeconds = "0" + remainingSeconds; }document.getElementById("countdown").innerHTML = minutes + ":" +    remainingSeconds;if (seconds == 0) {clearInterval(countdownTimer);document.getElementById("countdown").innerHTML = "Buzz Buzz";} else {          seconds--;}}var countdownTimer = setInterval("secondPassed()", 1000);</script>';
-$eid=@$_GET['eid'];
-$sn=@$_GET['n'];
-$total=@$_GET['t'];
-$q=mysqli_query($con,"SELECT * FROM questions WHERE eid='$eid' AND sn='$sn' ORDER BY RAND() " );
-echo '<div class="panel" style="margin:5%">';
-
-
-while($row=mysqli_fetch_array($q) )
-{
-$qns=$row['qns'];
-$qid=$row['qid'];
-echo '<b>Question &nbsp;'.$sn.'&nbsp;::<br />'.$qns.'</b><br /><br />';
-}
-$q=mysqli_query($con,"SELECT * FROM options WHERE qid='$qid' " );
-echo '<form action="update.php?q=quiz&step=2&eid='.$eid.'&n='.$sn.'&t='.$total.'&qid='.$qid.'" method="POST"  class="form-horizontal">
-<br />';
-
-while($row=mysqli_fetch_array($q) )
-{
-
-$option=$row['option'];
-$optionid=$row['optionid'];
-echo'<input type="radio" name="ans" value="'.$optionid.'">'.$option.'<br /><br />';
-}
-echo'<br /><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;Submit</button></form></div>';
-//header("location:dash.php?q=4&step=2&eid=$id&n=$total");
+    $eid=@$_GET['eid'];
+    $sn=@$_GET['n'];
+    $total=@$_GET['t'];
+    $q=mysqli_query($con,"SELECT * FROM questions WHERE eid='$eid' AND sn='$sn' " );
+    echo '<div class="panel" style="margin:5%">';
+    while($row=mysqli_fetch_array($q) )
+    {
+        $qns=$row['qns'];
+        $qid=$row['qid'];
+        $qtype=$row['type'];
+        echo '<b>Question &nbsp;'.$sn.'&nbsp;::<br />'.$qns.'</b><br /><br />';
+    }
+    $q=mysqli_query($con,"SELECT * FROM options WHERE qid='$qid' " );
+    echo '<form action="update.php?q=quiz&step=2&eid='.$eid.'&n='.$sn.'&t='.$total.'&qid='.$qid.'" method="POST"  class="form-horizontal">
+    <br />';
+    while($row=mysqli_fetch_array($q) )
+    {
+        if($qtype == "mcq-image"){        
+            $option=$row['option'];
+            $optionid=$row['optionid'];
+            $imageUrl = getBaseUrl().'/image/question/'.$option;
+            echo '<div class="col-md-3">';
+            echo'<input type="radio" name="ans" value="'.$optionid.'">&nbsp;&nbsp;&nbsp;<img src="'.$imageUrl.'" style="max-height:100px;"/><br /><br />';
+            echo '</div>';
+        }else{        
+            $option=$row['option'];
+            $optionid=$row['optionid'];
+            echo'<input type="radio" name="ans" value="'.$optionid.'">'.$option.'<br /><br />';
+        }
+    }
+    echo'<br /><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;Submit</button></form></div>';
+    //header("location:dash.php?q=4&step=2&eid=$id&n=$total");
 }
 //result display
 if(@$_GET['q']== 'result' && @$_GET['eid']) 
@@ -174,8 +207,8 @@ $r=$row['sahi'];
 $qa=$row['level'];
 echo '<tr style="color:#66CCFF"><td>Total Questions</td><td>'.$qa.'</td></tr>
       <tr style="color:#99cc32"><td>right Answer&nbsp;<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></td><td>'.$r.'</td></tr> 
-	    <tr style="color:red"><td>Wrong Answer&nbsp;<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></td><td>'.$w.'</td></tr>
-	    <tr style="color:#66CCFF"><td>Score&nbsp;<span class="glyphicon glyphicon-star" aria-hidden="true"></span></td><td>'.$s.'</td></tr>';
+	  <tr style="color:red"><td>Wrong Answer&nbsp;<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></td><td>'.$w.'</td></tr>
+	  <tr style="color:#66CCFF"><td>Score&nbsp;<span class="glyphicon glyphicon-star" aria-hidden="true"></span></td><td>'.$s.'</td></tr>';
 }
 $q=mysqli_query($con,"SELECT * FROM rank WHERE  email='$email' " )or die('Error157');
 while($row=mysqli_fetch_array($q) )
@@ -241,9 +274,12 @@ echo '<tr><td style="color:#99cc32"><b>'.$c.'</b></td><td>'.$name.'</td><td>'.$g
 echo '</table></div>';}
 ?>
 
+
+
 </div></div></div></div>
 <?php
-require("includes/footer.php");
+require("includes/footer_local.php");
 ?>
+
 </body>
 </html>

@@ -56,7 +56,7 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
                 <div class="clr"></div>
             </div><!--/ Codrops top bar -->
             <header>
-                <h1>Skill Oxide Student Portal <span></span></h1>
+                <h1>Skill Oxide Student Portal Admin Panel <span></span></h1>
                 <h2>Quality with speed</h2>
 				<p class="codrops-demos btn-lg">
 				</p>
@@ -204,7 +204,7 @@ var b = document.forms["form"]["cpassword"].value;if (a!=b){alert("Passwords mus
 </div><!--container end-->
 <div class="container-fluid">
 <?php
-require("includes/footer_local.php");
+require("includes/footer.php");
 ?>
 </div>
 </body>

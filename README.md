@@ -1,3 +1,2 @@
 # Online-Exam-System-
-under development
-
+this is sparda

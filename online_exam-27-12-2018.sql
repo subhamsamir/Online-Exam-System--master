@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1deb2ubuntu2.1
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 21, 2018 at 12:10 PM
--- Server version: 10.1.35-MariaDB
--- PHP Version: 7.2.9
+-- Host: localhost
+-- Generation Time: Dec 27, 2018 at 06:54 PM
+-- Server version: 5.7.24-0ubuntu0.16.04.1
+-- PHP Version: 7.1.24-1+ubuntu16.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -73,7 +71,14 @@ INSERT INTO `answer` (`qid`, `ansid`) VALUES
 ('5589751a63091', '5589751a81bf4'),
 ('5589751ad32b8', '5589751adbdbd'),
 ('5589751b304ef', '5589751b3b04d'),
-('5589751b749c9', '5589751b9a98c');
+('5589751b749c9', '5589751b9a98c'),
+('5c221963127a8', '5c221963148f1'),
+('5c22196318006', '5c2219631b9e9'),
+('5c2219631d0be', '5c2219631d6df'),
+('5c221a6d1acaa', '5c221a6d1bf19'),
+('5c221a6d23c52', '5c221a6d24dad'),
+('5c221a6d2b6d2', '5c221a6d2ddce'),
+('5c23b87454015', '5c23b87455834');
 
 -- --------------------------------------------------------
 
@@ -132,7 +137,9 @@ INSERT INTO `history` (`email`, `eid`, `score`, `level`, `sahi`, `wrong`, `date`
 ('nik1@gmail.com', '558921841f1ec', 1, 2, 1, 1, '2015-06-23 16:11:50'),
 ('sunnygkp10@gmail.com', '5589222f16b93', 1, 2, 1, 1, '2015-06-24 03:22:38'),
 ('ssrp2814@gmail.com', '5bf50ab13fdc0', 1, 1, 1, 0, '2018-11-22 05:11:48'),
-('ssrp2814@gmail.com', '55897338a6659', -2, 5, 1, 4, '2018-11-22 05:12:05');
+('ssrp2814@gmail.com', '55897338a6659', -2, 5, 1, 4, '2018-11-22 05:12:05'),
+('unisyster@gmail.com', '5c22192d5927f', 3, 3, 3, 0, '2018-12-25 11:50:17'),
+('unisyster@gmail.com', '5c2219e4756b0', -1, 1, 0, 1, '2018-12-26 17:01:37');
 
 -- --------------------------------------------------------
 
@@ -219,7 +226,31 @@ INSERT INTO `options` (`qid`, `option`, `optionid`) VALUES
 ('5589751b749c9', 'x', '5589751b9a9a5'),
 ('5589751b749c9', 'D', '5589751b9a9b7'),
 ('5589751b749c9', 'd', '5589751b9a9c9'),
-('5589751bd02ec', 'autoindentation is not possible in vi editor', '5589751bdadaa');
+('5589751bd02ec', 'autoindentation is not possible in vi editor', '5589751bdadaa'),
+('5c221963127a8', 'd', '5c22196314878'),
+('5c221963127a8', 'dasd', '5c221963148b6'),
+('5c221963127a8', 'dwd', '5c221963148f1'),
+('5c221963127a8', 'dwdqw', '5c22196314930'),
+('5c22196318006', 'true', '5c2219631b9ad'),
+('5c22196318006', 'false', '5c2219631b9e9'),
+('5c2219631d0be', 'q1_1.jpg', '5c2219631d66f'),
+('5c2219631d0be', 'q1_2.jpg', '5c2219631d6a9'),
+('5c2219631d0be', 'q1_3.jpg', '5c2219631d6df'),
+('5c2219631d0be', 'q1_4.jpg', '5c2219631d715'),
+('5c221a6d1acaa', 'True', '5c221a6d1becc'),
+('5c221a6d1acaa', 'False', '5c221a6d1bf19'),
+('5c221a6d23c52', 'q1_1.jpg', '5c221a6d24d70'),
+('5c221a6d23c52', 'q1_2.jpg', '5c221a6d24dad'),
+('5c221a6d23c52', 'q1_3.jpg', '5c221a6d24de7'),
+('5c221a6d23c52', 'q1_4.jpg', '5c221a6d24e26'),
+('5c221a6d2b6d2', 'opt1', '5c221a6d2dd2a'),
+('5c221a6d2b6d2', 'opt2', '5c221a6d2dd63'),
+('5c221a6d2b6d2', 'opt3', '5c221a6d2dd99'),
+('5c221a6d2b6d2', 'opt4', '5c221a6d2ddce'),
+('5c23b87454015', 'q1_1.jpg', '5c23b874557f3'),
+('5c23b87454015', 'q1_2.jpg', '5c23b87455834'),
+('5c23b87454015', 'q1_3.jpg', '5c23b87455874'),
+('5c23b87454015', 'q1_4.jpg', '5c23b874558af');
 
 -- --------------------------------------------------------
 
@@ -231,6 +262,7 @@ CREATE TABLE `questions` (
   `eid` text NOT NULL,
   `qid` text NOT NULL,
   `qns` text NOT NULL,
+  `type` varchar(255) NOT NULL DEFAULT 'mcq',
   `choice` int(10) NOT NULL,
   `sn` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -239,25 +271,32 @@ CREATE TABLE `questions` (
 -- Dumping data for table `questions`
 --
 
-INSERT INTO `questions` (`eid`, `qid`, `qns`, `choice`, `sn`) VALUES
-('558920ff906b8', '55892169bf6a7', 'what is command for changing user information??', 4, 1),
-('558920ff906b8', '5589216a3646e', 'what is permission for view only for other??', 4, 2),
-('558921841f1ec', '558922117fcef', 'what is command for print in php??', 4, 1),
-('558921841f1ec', '55892211e44d5', 'which is a variable of php??', 4, 2),
-('5589222f16b93', '558922894c453', 'what is correct statement in c++??', 4, 1),
-('5589222f16b93', '558922899ccaa', 'which command is use for print the output in c++?', 4, 2),
-('558922ec03021', '558923538f48d', 'what is correct mask for A class IP???', 4, 1),
-('558922ec03021', '55892353f05c4', 'which is not a private IP??', 4, 2),
-('55897338a6659', '558973f4389ac', 'On Linux, initrd is a file', 4, 1),
-('55897338a6659', '558973f4c46f2', 'Which is loaded into memory when system is booted?', 4, 2),
-('55897338a6659', '558973f51600d', ' The process of starting up a computer is known as', 4, 3),
-('55897338a6659', '558973f55d269', ' Bootstrapping is also known as', 4, 4),
-('55897338a6659', '558973f5abb1a', 'The shell used for Single user mode shell is:', 4, 5),
-('5589741f9ed52', '5589751a63091', ' Which command is used to close the vi editor?', 4, 1),
-('5589741f9ed52', '5589751ad32b8', ' In vi editor, the key combination CTRL+f', 4, 2),
-('5589741f9ed52', '5589751b304ef', ' Which vi editor command copies the current line of the file?', 4, 3),
-('5589741f9ed52', '5589751b749c9', ' Which command is used to delete the character before the cursor location in vi editor?', 4, 4),
-('5589741f9ed52', '5589751bd02ec', ' Which one of the following statement is true?', 4, 5);
+INSERT INTO `questions` (`eid`, `qid`, `qns`, `type`, `choice`, `sn`) VALUES
+('558920ff906b8', '55892169bf6a7', 'what is command for changing user information??', 'mcq', 4, 1),
+('558920ff906b8', '5589216a3646e', 'what is permission for view only for other??', 'mcq', 4, 2),
+('558921841f1ec', '558922117fcef', 'what is command for print in php??', 'mcq', 4, 1),
+('558921841f1ec', '55892211e44d5', 'which is a variable of php??', 'mcq', 4, 2),
+('5589222f16b93', '558922894c453', 'what is correct statement in c++??', 'mcq', 4, 1),
+('5589222f16b93', '558922899ccaa', 'which command is use for print the output in c++?', 'mcq', 4, 2),
+('558922ec03021', '558923538f48d', 'what is correct mask for A class IP???', 'mcq', 4, 1),
+('558922ec03021', '55892353f05c4', 'which is not a private IP??', 'mcq', 4, 2),
+('55897338a6659', '558973f4389ac', 'On Linux, initrd is a file', 'mcq', 4, 1),
+('55897338a6659', '558973f4c46f2', 'Which is loaded into memory when system is booted?', 'mcq', 4, 2),
+('55897338a6659', '558973f51600d', ' The process of starting up a computer is known as', 'mcq', 4, 3),
+('55897338a6659', '558973f55d269', ' Bootstrapping is also known as', 'mcq', 4, 4),
+('55897338a6659', '558973f5abb1a', 'The shell used for Single user mode shell is:', 'mcq', 4, 5),
+('5589741f9ed52', '5589751a63091', ' Which command is used to close the vi editor?', 'mcq', 4, 1),
+('5589741f9ed52', '5589751ad32b8', ' In vi editor, the key combination CTRL+f', 'mcq', 4, 2),
+('5589741f9ed52', '5589751b304ef', ' Which vi editor command copies the current line of the file?', 'mcq', 4, 3),
+('5589741f9ed52', '5589751b749c9', ' Which command is used to delete the character before the cursor location in vi editor?', 'mcq', 4, 4),
+('5589741f9ed52', '5589751bd02ec', ' Which one of the following statement is true?', 'mcq', 4, 5),
+('5c22192d5927f', '5c221963127a8', 'h hdhdqhqihq', 'mcq', 4, 1),
+('5c22192d5927f', '5c22196318006', 'KFDJJ RJEW', 'boolean', 4, 2),
+('5c22192d5927f', '5c2219631d0be', 'dasjdg hrqwurhuew', 'mcq-image', 4, 3),
+('5c2219e4756b0', '5c221a6d1acaa', 'question 1', 'boolean', 4, 1),
+('5c2219e4756b0', '5c221a6d23c52', 'Questrion2', 'mcq-image', 4, 2),
+('5c2219e4756b0', '5c221a6d2b6d2', 'Question 3', 'mcq', 4, 3),
+('5c23b832e6233', '5c23b87454015', 'asdhdhd ishd udhad<br><img src="http://localhost/onlineexam//image/question/q1_1.jpg" style="max-height:300px;"', 'mcq-image', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -288,7 +327,11 @@ INSERT INTO `quiz` (`eid`, `title`, `sahi`, `wrong`, `total`, `time`, `intro`, `
 ('558922ec03021', 'Networking', 2, 1, 2, 5, '', 'networking', '2015-06-23 09:12:12'),
 ('55897338a6659', 'Linux:startup', 2, 1, 5, 10, '', 'linux', '2015-06-23 14:54:48'),
 ('5589741f9ed52', 'Linux :vi Editor', 2, 1, 5, 10, '', 'linux', '2015-06-23 14:58:39'),
-('5bf50ab13fdc0', 'Ishika', 1, 1, 5, 5, 'fsafsf', 'asdsdaf', '2018-11-21 07:35:13');
+('5bf50ab13fdc0', 'Ishika', 1, 1, 5, 5, 'fsafsf', 'asdsdaf', '2018-11-21 07:35:13'),
+('5c22192d5927f', 'Test', 1, 1, 3, 30, '', '', '2018-12-25 11:49:01'),
+('5c2219e4756b0', 'Test 1', 1, 1, 3, 30, '', '', '2018-12-25 11:52:04'),
+('5c23a87b37bbb', 'Test2', 1, 1, 4, 30, '', '', '2018-12-26 16:12:43'),
+('5c23b832e6233', 'Fdfsdf', 1, 1, 1, 20, '', '', '2018-12-26 17:19:46');
 
 -- --------------------------------------------------------
 
@@ -336,9 +379,9 @@ INSERT INTO `user` (`name`, `gender`, `college`, `email`, `mob`, `password`) VAL
 ('Avantika', 'F', 'KNIT sultanpur', 'avantikaxyz@gmail.com', 123456789, 'e10adc3949ba59abbe56e057f20f883e'),
 ('Mark Zukarburg', 'M', 'Stanford', 'ceo@facebook.com', 987654321, 'e10adc3949ba59abbe56e057f20f883e'),
 ('Tom Cruze', 'M', 'Hollywood', 'mi5@hollywood.com', 7785068889, 'e10adc3949ba59abbe56e057f20f883e'),
+('Vikash', 'M', 'KNIT sultanpur@gmail.com', 'milan@gmail.com', 123456789, '827ccb0eea8a706c4c34a16891f84e7b'),
 ('subham samir', 'male', 'iimt', 'ssrp2814@gmail.com', 7042570546, 'e10adc3949ba59abbe56e057f20f883e'),
-('Sunny', 'M', 'KNIT sultanpur', 'sunny@gmail.com', 123456789, 'e10adc3949ba59abbe56e057f20f883e'),
-('Vikash', 'M', 'KNIT sultanpur@gmail.com', 'vikash@gmail.com', 123456789, 'e10adc3949ba59abbe56e057f20f883e');
+('Sunny', 'M', 'KNIT sultanpur', 'sunny@gmail.com', 123456789, '827ccb0eea8a706c4c34a16891f84e7b');
 
 --
 -- Indexes for dumped tables
@@ -349,7 +392,6 @@ INSERT INTO `user` (`name`, `gender`, `college`, `email`, `mob`, `password`) VAL
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`email`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
