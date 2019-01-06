@@ -1,14 +1,14 @@
 <!--Footer start-->
 <div class="row footer">
-<div class="col-md-3 box">
-<a href="" target="_blank">About us</a>
+<div class="col-md-4 box">
+<a href="#" data-toggle="modal" data-target="#developers" >About us</a>
 </div>
-<div class="col-md-3 box">
+<div class="col-md-4 box">
 <a href="#" data-toggle="modal" data-target="#login">Admin Login</a></div>
-<div class="col-md-3 box">
+<!--<div class="col-md-3 box">
 <a href="#" data-toggle="modal" data-target="#developers">Developers</a>
-</div>
-<div class="col-md-3 box">
+</div>-->
+<div class="col-md-4 box">
 <a href="feedback.php" target="_blank">Feedback</a></div></div>
 <!-- Modal For Developers-->
 <div class="modal fade title1" id="developers">
@@ -16,20 +16,21 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" style="font-family:'typo' "><span style="color:orange">Developers</span></h4>
+        <h4 class="modal-title" style="font-family:'typo' "><span style="color:Black">About Us</span></h4>
       </div>
 	  
       <div class="modal-body">
         <p>
 		<div class="row">
-		<div class="col-md-4">
-		 <img src="image/CAM00121.jpg" width=100 height=100 alt="unisyster" class="img-rounded">
+		<div class="col-md-6">
+		 <img src="image/CAM00121.jpg" width=300 height=100 alt="unisyster" class="img-rounded">
 		 </div>
-		 <div class="col-md-5">
-		<a href="https://www.facebook.com/ssrpandey" style="color:#202020; font-family:'typo' ; font-size:18px" title="Find on Facebook">Mr.Owl</a>
-		<h4 style="color:#202020; font-family:'typo' ;font-size:16px" class="title1">+917042570546</h4>
-		<h4 style="font-family:'typo' ">unisyster@gmail.com</h4>
-		<h4 style="font-family:'typo' ">xxx,xxx,xxxxxxxx</h4></div></div>
+		 <div class="col-md-6">
+		<a href="https://www.facebook.com/skilloxideit" style="color:#202020; font-family:'typo' ; font-size:18px" title="Find on Facebook">Skill Oxide Developers</a>
+		<h4 style="color:#202020; font-family:'typo' ;font-size:16px" class="title1">+918700877042</h4>
+		<h4 style="font-family:'typo' ">Supporat@skilloxide.com</h4>
+		<h4 style="font-family:'typo' ">Established in the year 2014, Skill Oxide is a global IT services company focused on skill development, software life cycle, IT consulting and provides offshore outsourcing solutions to enterprises worldwide.
+        </h4></div></div>
 		</p>
       </div>
     
